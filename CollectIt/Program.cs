@@ -10,27 +10,41 @@ namespace CollectIt
     {
         static void Main(string[] args)
         {
-            ProcessEmployeeArray();
+            //ProcessEmployeeArray();
+
+            //WriteSeparator();
+
+            //ProcessEmployeeList();
+
+            //WriteSeparator();
+
+            //try
+            //{
+            //    ProcessIntList();
+            //}
+            //catch { }
+
+            //WriteSeparator();
+
+            //ProcessEmployeeQueue();
+
+            //WriteSeparator();
+
+            //ProcessEmployeeStack();
+
+            //WriteSeparator();
+
+            //ProcessIntHashSet();
+
+            //WriteSeparator();
+
+            //ProcessEmployeeHashSet();
+
+            //WriteSeparator();
+
+            ProcessIntLinkedList();
 
             WriteSeparator();
-
-            ProcessEmployeeList();
-
-            WriteSeparator();
-
-            try
-            {
-                ProcessIntList();
-            }
-            catch { }
-
-            WriteSeparator();
-
-            ProcessEmployeeQueue();
-
-            WriteSeparator();
-
-            ProcessEmployeeStack();
 
             Console.ReadLine();
         }
@@ -124,6 +138,57 @@ namespace CollectIt
             {
                 var employee = stack.Pop();
                 Console.WriteLine(employee.Name);
+            }
+        }
+
+        private static void ProcessIntHashSet()
+        {
+            HashSet<int> set = new HashSet<int>();
+            set.Add(1);
+            set.Add(2);
+            set.Add(2);
+
+            foreach (var item in set)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+        private static void ProcessEmployeeHashSet()
+        {
+            HashSet<Employee> set = new HashSet<Employee>();
+            set.Add(new Employee { Name = "Scott" }); //Inne referencje
+            set.Add(new Employee { Name = "Scott" });
+            var employee = new Employee { Name = "Alex" }; //Te same referencje
+            set.Add(employee);
+            set.Add(employee);
+
+            foreach (var item in set)
+            {
+                Console.WriteLine(item.Name);
+            }
+        }
+
+        private static void ProcessIntLinkedList()
+        {
+            LinkedList<int> list = new LinkedList<int>();
+            list.AddFirst(2);
+            list.AddFirst(3);
+
+            var first = list.First;
+            list.AddAfter(first, 5);
+            list.AddBefore(first, 10);
+
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
+
+            var node = list.First;
+            while (node != null)
+            {
+                Console.WriteLine(node.Value);
+                node = node.Next;
             }
         }
     }
