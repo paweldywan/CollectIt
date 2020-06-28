@@ -42,7 +42,11 @@ namespace CollectIt
 
             //WriteSeparator();
 
-            ProcessIntLinkedList();
+            //ProcessIntLinkedList();
+
+            //WriteSeparator();
+
+            ProcessEmployeeDictionary();
 
             WriteSeparator();
 
@@ -189,6 +193,48 @@ namespace CollectIt
             {
                 Console.WriteLine(node.Value);
                 node = node.Next;
+            }
+        }
+
+        private static void ProcessEmployeeDictionary()
+        {
+            var employeesByName2 = new Dictionary<string, Employee>();
+
+            employeesByName2.Add("Scott", new Employee { Name = "Scott" });
+            employeesByName2.Add("Alex", new Employee { Name = "Alex" });
+            employeesByName2.Add("Joy", new Employee { Name = "Joy" });
+
+            var scott = employeesByName2["Scott"];
+
+            foreach (var item in employeesByName2)
+            {
+                Console.WriteLine("{0}:{1}", item.Key, item.Value.Name);
+            }
+
+
+            var employeesByDepartment = new Dictionary<string, List<Employee>>();
+
+            employeesByDepartment.Add("Engineering", new List<Employee> { new Employee { Name = "Scott" } });
+
+            employeesByDepartment["Engineering"].Add(new Employee { Name = "Scott" });
+
+            foreach (var item in employeesByDepartment)
+            {
+                foreach (var employee in item.Value)
+                {
+                    Console.WriteLine(employee.Name);
+                }
+            }
+
+
+            var employeesByDepartment2 = new SortedList<string, List<Employee>>();
+
+            employeesByDepartment2.Add("Sales", new List<Employee> { new Employee(), new Employee(), new Employee() });
+            employeesByDepartment2.Add("Engineering", new List<Employee> { new Employee(), new Employee() });
+
+            foreach (var item in employeesByDepartment2)
+            {
+                Console.WriteLine("The count of employees for {0} is {1}", item.Key, item.Value.Count);
             }
         }
     }
