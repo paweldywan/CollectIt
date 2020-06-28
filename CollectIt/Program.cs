@@ -48,8 +48,6 @@ namespace CollectIt
 
             ProcessEmployeeDictionary();
 
-            WriteSeparator();
-
             Console.ReadLine();
         }
 
