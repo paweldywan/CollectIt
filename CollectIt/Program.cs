@@ -21,7 +21,7 @@ namespace CollectIt
 
         public int Compare(Employee x, Employee y)
         {
-            return string.Compare(x.Name, y.Name); // -1, gdy pierwszy jest większy, 1 gdy drugi jest większy i 0 gdy są równe
+            return string.Compare(x.Name, y.Name); // "<0", gdy pierwszy jest większy, ">0" gdy drugi jest większy i 0 gdy są równe
         }
     }
 
