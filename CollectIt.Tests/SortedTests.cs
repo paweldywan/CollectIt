@@ -13,11 +13,12 @@ namespace CollectIt.Tests
         [TestMethod]
         public void Can_Use_Sorted_List()
         {
-            var list = new SortedList<int, string>(); //Szybka iteracja w przeciwieństwie do SortedDictionary, klucze także muszą być unikalne
-
-            list.Add(3, "three");
-            list.Add(1, "one");
-            list.Add(2, "two");
+            var list = new SortedList<int, string>
+            {
+                { 3, "three" },
+                { 1, "one" },
+                { 2, "two" }
+            }; //Szybka iteracja w przeciwieństwie do SortedDictionary, klucze także muszą być unikalne. Mało wydajne wstawianie i usuwanie, dość wydajne szukanie.
 
             Assert.AreEqual(0, list.IndexOfKey(1));
             Assert.AreEqual(1, list.IndexOfValue("two"));
@@ -26,11 +27,12 @@ namespace CollectIt.Tests
         [TestMethod]
         public void Can_Use_SortedSet()
         {
-            var set = new SortedSet<int>();
-
-            set.Add(3);
-            set.Add(1);
-            set.Add(2);
+            var set = new SortedSet<int>
+            {
+                3,
+                1,
+                2
+            };
 
             var enumerator = set.GetEnumerator();
             enumerator.MoveNext();

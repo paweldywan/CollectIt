@@ -13,9 +13,11 @@ namespace CollectIt.Tests
         [TestMethod]
         public void Can_Use_Dictionary_As_Map()
         {
-            var map = new Dictionary<int, string>(); //Zoptymalizowany pod kątem wydajnego wstawiania, usuwania i wyszukiwania pod indeksie
-            map.Add(1, "one");
-            map.Add(2, "two");
+            var map = new Dictionary<int, string>
+            {
+                { 1, "one" },
+                { 2, "two" }
+            }; //Zoptymalizowany pod kątem wydajnego wstawiania, usuwania i wyszukiwania pod indeksie, natomiast SortedList pod kątem iteracji.
 
             Assert.AreEqual("one", map[1]);
         }
@@ -23,9 +25,11 @@ namespace CollectIt.Tests
         [TestMethod]
         public void Can_Search_Key_With_ContainsKey()
         {
-            var map = new Dictionary<int, string>();
-            map.Add(1, "one");
-            map.Add(2, "two");
+            var map = new Dictionary<int, string>
+            {
+                { 1, "one" },
+                { 2, "two" }
+            };
 
             Assert.IsTrue(map.ContainsKey(2));
         }
@@ -33,10 +37,12 @@ namespace CollectIt.Tests
         [TestMethod]
         public void Can_Remove_By_Key()
         {
-            var map = new Dictionary<int, string>();
-            map.Add(1, "one");
-            map.Add(2, "two");
-            
+            var map = new Dictionary<int, string>
+            {
+                { 1, "one" },
+                { 2, "two" }
+            };
+
             map.Remove(1);
 
             Assert.AreEqual(1, map.Count);

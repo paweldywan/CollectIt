@@ -44,47 +44,53 @@ namespace CollectIt
     {
         static void Main(string[] args)
         {
-            //ProcessEmployeeArray();
+            _ = args;
 
-            //WriteSeparator();
+            ProcessEmployeeArray();
 
-            //ProcessEmployeeList();
+            WriteSeparator();
 
-            //WriteSeparator();
+            ProcessEmployeeList();
 
-            //try
-            //{
-            //    ProcessIntList();
-            //}
-            //catch { }
+            WriteSeparator();
 
-            //WriteSeparator();
+            try
+            {
+                ProcessIntList();
+            }
+            catch 
+            { 
 
-            //ProcessEmployeeQueue();
+            }
 
-            //WriteSeparator();
+            WriteSeparator();
 
-            //ProcessEmployeeStack();
+            ProcessEmployeeQueue();
 
-            //WriteSeparator();
+            WriteSeparator();
 
-            //ProcessIntHashSet();
+            ProcessEmployeeStack();
 
-            //WriteSeparator();
+            WriteSeparator();
 
-            //ProcessEmployeeHashSet();
+            ProcessIntHashSet();
 
-            //WriteSeparator();
+            WriteSeparator();
 
-            //ProcessIntLinkedList();
+            ProcessEmployeeHashSet();
 
-            //WriteSeparator();
+            WriteSeparator();
 
-            //ProcessEmployeeDictionary();
+            ProcessIntLinkedList();
 
-            //WriteSeparator();
+            WriteSeparator();
+
+            ProcessEmployeeDictionary();
+
+            WriteSeparator();
 
             ProcessDepartmentCollection();
+
 
             Console.ReadLine();
         }
@@ -108,6 +114,11 @@ namespace CollectIt
             }
 
             Array.Resize(ref employees, 10);
+        }
+
+        private static void WriteSeparator()
+        {
+            Console.WriteLine("---");
         }
 
         private static void ProcessEmployeeList()
@@ -162,11 +173,6 @@ namespace CollectIt
             }
         }
 
-        private static void WriteSeparator()
-        {
-            Console.WriteLine("---");
-        }
-
         private static void ProcessEmployeeStack()
         {
             Stack<Employee> stack = new Stack<Employee>();
@@ -183,10 +189,12 @@ namespace CollectIt
 
         private static void ProcessIntHashSet()
         {
-            HashSet<int> set = new HashSet<int>();
-            set.Add(1);
-            set.Add(2);
-            set.Add(2);
+            HashSet<int> set = new HashSet<int>
+            {
+                1,
+                2,
+                2
+            };
 
             foreach (var item in set)
             {
@@ -196,9 +204,11 @@ namespace CollectIt
 
         private static void ProcessEmployeeHashSet()
         {
-            HashSet<Employee> set = new HashSet<Employee>();
-            set.Add(new Employee { Name = "Scott" }); //Inne referencje
-            set.Add(new Employee { Name = "Scott" });
+            HashSet<Employee> set = new HashSet<Employee>
+            {
+                new Employee { Name = "Scott" }, //Inne referencje
+                new Employee { Name = "Scott" }
+            };
             var employee = new Employee { Name = "Alex" }; //Te same referencje
             set.Add(employee);
             set.Add(employee);
@@ -234,13 +244,14 @@ namespace CollectIt
 
         private static void ProcessEmployeeDictionary()
         {
-            var employeesByName2 = new Dictionary<string, Employee>();
+            var employeesByName2 = new Dictionary<string, Employee>
+            {
+                { "Scott", new Employee { Name = "Scott" } },
+                { "Alex", new Employee { Name = "Alex" } },
+                { "Joy", new Employee { Name = "Joy" } }
+            };
 
-            employeesByName2.Add("Scott", new Employee { Name = "Scott" });
-            employeesByName2.Add("Alex", new Employee { Name = "Alex" });
-            employeesByName2.Add("Joy", new Employee { Name = "Joy" });
-
-            var scott = employeesByName2["Scott"];
+            _ = employeesByName2["Scott"];
 
             foreach (var item in employeesByName2)
             {
@@ -248,9 +259,10 @@ namespace CollectIt
             }
 
 
-            var employeesByDepartment = new Dictionary<string, List<Employee>>();
-
-            employeesByDepartment.Add("Engineering", new List<Employee> { new Employee { Name = "Scott" } });
+            var employeesByDepartment = new Dictionary<string, List<Employee>>
+            {
+                { "Engineering", new List<Employee> { new Employee { Name = "Scott" } } }
+            };
 
             employeesByDepartment["Engineering"].Add(new Employee { Name = "Scott" });
 
@@ -263,10 +275,11 @@ namespace CollectIt
             }
 
 
-            var employeesByDepartment2 = new SortedList<string, List<Employee>>();
-
-            employeesByDepartment2.Add("Sales", new List<Employee> { new Employee(), new Employee(), new Employee() });
-            employeesByDepartment2.Add("Engineering", new List<Employee> { new Employee(), new Employee() });
+            var employeesByDepartment2 = new SortedList<string, List<Employee>>
+            {
+                { "Sales", new List<Employee> { new Employee(), new Employee(), new Employee() } },
+                { "Engineering", new List<Employee> { new Employee(), new Employee() } }
+            };
 
             foreach (var item in employeesByDepartment2)
             {
